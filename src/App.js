@@ -1,8 +1,14 @@
 import swords from "./utils/data";
 
+//IMPORTING COMPONENETS
+import Navbar from "./components/Navbar";
+
 function App() {
-  console.log(swords);
-  return <h1>Testing</h1>;
+  return (
+    <>
+      <Navbar />
+    </>
+  );
 }
 
 export default App;
