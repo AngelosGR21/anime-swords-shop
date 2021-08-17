@@ -16,9 +16,26 @@ import useStyles from "../useStyles";
 
 const Sword = ({ sword }) => {
   const classes = useStyles();
-  const { cart, setCart, total, setTotal } = useContext(DataContext);
+  const { cart, setCart, total, setTotal, cartItems, setCartItems } =
+    useContext(DataContext);
   console.log(cart);
-  console.log(total);
+
+  //CART FUNCTIONALITY
+  const searchCart = (sword) => {
+    let search = cart.find((item) => item.name === sword.name);
+    if (search !== undefined) {
+      sword.itemsInCart += 1;
+      setCart([...cart]);
+      setCartItems(cartItems + 1);
+      setTotal(total + parseFloat(sword.price));
+    } else {
+      sword.itemsInCart += 1;
+      setCart([...cart, sword]);
+      setCartItems(cartItems + 1);
+      setTotal(total + parseFloat(sword.price));
+    }
+  };
+
   return (
     <Grid item xs={12} sm={6} md={4} lg={3} className={classes.swordContainer}>
       <Card className={classes.sword} raised={true}>
@@ -28,16 +45,13 @@ const Sword = ({ sword }) => {
           component="img"
         />
         <CardContent>
-          <Typography>{sword.name}</Typography>
+          <Typography>{sword.name},</Typography>
           <Typography>{sword.wielder}</Typography>
           <Typography>£ {sword.price}</Typography>
         </CardContent>
         <CardActions>
           <Button
-            onClick={() => {
-              setCart([...cart, sword]);
-              setTotal(total + parseFloat(sword.price));
-            }}
+            onClick={() => searchCart(sword)}
             color="primary"
             endIcon={<AddShoppingCart />}
           >
