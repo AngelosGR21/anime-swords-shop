@@ -6,6 +6,7 @@ class Sword {
     this.wielder = wielder;
     this.price = price;
     this.animeTitle = animeTitle;
+    this.itemsInCart = 0;
   }
 }
 
