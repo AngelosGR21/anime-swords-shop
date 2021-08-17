@@ -1,7 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
+
+import Home from "./Home";
+import Cart from "./Cart";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -12,9 +14,11 @@ ReactDOM.render(
     <Router>
       <DataProvider>
         <Route path="/" exact>
-          <App />
+          <Home />
         </Route>
-        <Route path="/cart"></Route>
+        <Route path="/cart">
+          <Cart />
+        </Route>
       </DataProvider>
     </Router>
   </React.StrictMode>,
