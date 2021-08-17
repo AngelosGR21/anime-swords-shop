@@ -6,7 +6,7 @@ import { DataContext } from "./utils/DataProvider";
 
 const Cart = () => {
   const { cart } = useContext(DataContext);
-  console.log(cart);
+
   return (
     <>
       <Navbar />
