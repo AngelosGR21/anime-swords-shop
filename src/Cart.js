@@ -1,5 +1,5 @@
 //HOOKS
-import { useContext, useState } from "react";
+import { useContext } from "react";
 //COMPONENTS
 import Navbar from "./components/Navbar";
 
@@ -23,15 +23,43 @@ import useStyles from "./useStyles";
 
 const Cart = () => {
   const classes = useStyles();
-  const { cart, setCart } = useContext(DataContext);
-  const [rerender, setRerender] = useState(true);
+  const { cart, setCart, setCartItems, cartItems, total, setTotal } =
+    useContext(DataContext);
+
+  const onClickFunctionality = (item, operation) => {
+    if (operation === "plus") {
+      item.itemsInCart += 1;
+      setTotal(total + parseFloat(item.price));
+      setCartItems(cartItems + 1);
+    }
+    if (operation === "minus") {
+      //REMOVING ITEM FROM CART IF QTY = 0
+      if (item.itemsInCart === 1) {
+        let updatedCart = cart.filter((i) => i.id !== item.id);
+        setCartItems(cartItems - 1);
+        setTotal(total - parseFloat(item.price));
+        return setCart(updatedCart);
+      }
+      item.itemsInCart -= 1;
+      setTotal(total - parseFloat(item.price));
+      setCartItems(cartItems - 1);
+    }
+  };
+
+  if (cart.length === 0) {
+    return (
+      <>
+        <Navbar />
+        <h1>Cart empty</h1>
+      </>
+    );
+  }
 
   return (
     <>
       <Navbar />
       <Container className={classes.container} maxwidth="sm">
         {cart.map((item) => {
-          console.log(item.itemsInCart);
           return (
             <Card className={classes.cartCard} raised={true} key={item.id}>
               <CardMedia
@@ -43,8 +71,7 @@ const Cart = () => {
               <div className={classes.itemsNumberDiv}>
                 <IconButton
                   onClick={() => {
-                    item.itemsInCart -= 1;
-                    setRerender(rerender ? !rerender : true);
+                    onClickFunctionality(item, "minus");
                   }}
                   size="small"
                 >
@@ -53,8 +80,7 @@ const Cart = () => {
                 <Typography variant="h5">{item.itemsInCart}</Typography>
                 <IconButton
                   onClick={() => {
-                    item.itemsInCart += 1;
-                    setRerender(rerender ? !rerender : true);
+                    onClickFunctionality(item, "plus");
                   }}
                   size="small"
                 >
@@ -65,6 +91,11 @@ const Cart = () => {
               <IconButton
                 onClick={() => {
                   let updatedCart = cart.filter((i) => i.id !== item.id);
+                  setCartItems(cartItems - item.itemsInCart);
+                  setTotal(
+                    total -
+                      parseFloat(item.price) * parseFloat(item.itemsInCart)
+                  );
                   setCart(updatedCart);
                 }}
               >
