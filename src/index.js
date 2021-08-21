@@ -8,18 +8,22 @@ import Cart from "./Cart";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import { DataProvider } from "./utils/DataProvider";
+import { theme } from "./useStyles";
+import { ThemeProvider } from "@material-ui/core";
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <DataProvider>
-        <Route path="/" exact>
-          <Home />
-        </Route>
-        <Route path="/cart">
-          <Cart />
-        </Route>
-      </DataProvider>
+      <ThemeProvider theme={theme}>
+        <DataProvider>
+          <Route path="/" exact>
+            <Home />
+          </Route>
+          <Route path="/cart">
+            <Cart />
+          </Route>
+        </DataProvider>
+      </ThemeProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById("root")
