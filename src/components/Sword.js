@@ -18,8 +18,6 @@ const Sword = ({ sword }) => {
   const classes = useStyles();
   const { cart, setCart, total, setTotal, cartItems, setCartItems } =
     useContext(DataContext);
-  console.log(cart);
-
   //CART FUNCTIONALITY
   const searchCart = (sword) => {
     let search = cart.find((item) => item.name === sword.name);

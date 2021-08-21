@@ -9,20 +9,13 @@ import Filter from "./Filter";
 
 const Swords = () => {
   const classes = useStyles();
-  const { data } = useContext(DataContext);
+  const { allSwords } = useContext(DataContext);
   return (
     <>
       <Grid container>
         <Filter />
-        <Grid
-          container
-          item
-          direction="row"
-          className={classes.containerOfSwords}
-          xs={12}
-          sm={9}
-        >
-          {data.map((sword) => {
+        <Grid container item className={classes.containerOfSwords} xs={12}>
+          {allSwords.map((sword) => {
             return <Sword sword={sword} key={sword.id}></Sword>;
           })}
         </Grid>
