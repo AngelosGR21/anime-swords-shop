@@ -8,15 +8,18 @@ export const DataProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
   const [cartItems, setCartItems] = useState(0);
+  const [allSwords, setAllSwords] = useState(data);
 
   //Getting unique values for each sword title
-  const allTitles = ["All", ...new Set(data.map((sword) => sword.animeTitle))];
+  const allTitles = [...new Set(data.map((sword) => sword.animeTitle))];
 
   const [titles, setTitles] = useState(allTitles);
   return (
     <DataContext.Provider
       value={{
         data,
+        allSwords,
+        setAllSwords,
         cart,
         setCart,
         total,
