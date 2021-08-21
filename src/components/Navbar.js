@@ -13,7 +13,7 @@ import { useContext } from "react";
 import { DataContext } from "../utils/DataProvider";
 
 //IMPORTING STYLES
-import useStyles from "../useStyles";
+import { useStyles } from "../useStyles";
 
 const Navbar = () => {
   const { cartItems } = useContext(DataContext);
@@ -23,10 +23,12 @@ const Navbar = () => {
     <>
       <AppBar position="sticky" className={classes.navbar} color="primary">
         <Toolbar className={classes.toolbar}>
-          <Typography variant="h5">Brand</Typography>
+          <Link to="/" className={classes.brand}>
+            <Typography variant="h5">Shinai</Typography>
+          </Link>
           <Link to="/cart">
             <IconButton>
-              <Badge badgeContent={cartItems} color="error">
+              <Badge badgeContent={cartItems}>
                 <ShoppingBasketIcon />
               </Badge>
             </IconButton>

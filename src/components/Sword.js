@@ -12,7 +12,7 @@ import { AddShoppingCart } from "@material-ui/icons";
 import { useContext } from "react";
 import { DataContext } from "../utils/DataProvider";
 
-import useStyles from "../useStyles";
+import { useStyles } from "../useStyles";
 
 const Sword = ({ sword }) => {
   const classes = useStyles();
@@ -37,20 +37,22 @@ const Sword = ({ sword }) => {
   return (
     <Grid item xs={12} sm={6} md={4} lg={3} className={classes.swordContainer}>
       <Card className={classes.sword} raised={true}>
-        <CardMedia
-          image={sword.image}
-          className={classes.image}
-          component="img"
-        />
-        <CardContent>
+        <div className={classes.imageContainer}>
+          <CardMedia
+            image={sword.image}
+            className={classes.image}
+            component="img"
+          />
+        </div>
+        <CardContent className={classes.cardDetails}>
           <Typography>{sword.name},</Typography>
           <Typography>{sword.wielder}</Typography>
-          <Typography>£ {sword.price}</Typography>
         </CardContent>
-        <CardActions>
+        <CardActions className={classes.buttonAndPrice}>
+          <Typography className={classes.price}>£ {sword.price}</Typography>
           <Button
             onClick={() => searchCart(sword)}
-            color="primary"
+            color="inherit"
             endIcon={<AddShoppingCart />}
           >
             Buy

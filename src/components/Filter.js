@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Grid, Select, InputLabel, FormControl } from "@material-ui/core";
 
 import { DataContext } from "../utils/DataProvider";
-import useStyles from "../useStyles";
+import { useStyles } from "../useStyles";
 
 const Filter = () => {
   const classes = useStyles();
@@ -19,10 +19,25 @@ const Filter = () => {
     }
   };
   return (
-    <Grid container item xs={12} justifyContent="flex-start">
-      <FormControl>
-        <InputLabel htmlFor="title-filter">Filter</InputLabel>
+    <Grid
+      container
+      item
+      xs={12}
+      justifyContent="center"
+      alignContent="center"
+      className={classes.filterContainer}
+    >
+      <FormControl style={{ width: "90%" }}>
+        <InputLabel
+          htmlFor="title-filter"
+          classes={{
+            root: classes.filterLabel,
+          }}
+        >
+          Filter
+        </InputLabel>
         <Select
+          className={classes.select}
           native
           onChange={handleChange}
           inputProps={{ id: "title-filter" }}

@@ -19,7 +19,7 @@ import {
   IconButton,
 } from "@material-ui/core";
 //MATERIAL-UI STYLES
-import useStyles from "./useStyles";
+import { useStyles } from "./useStyles";
 
 const Cart = () => {
   const classes = useStyles();
