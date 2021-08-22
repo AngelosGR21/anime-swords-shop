@@ -13,7 +13,7 @@ const colors = {
   sText: "#ffffff",
 };
 
-export const useStyles = makeStyles({
+export const useStyles = makeStyles((theme) => ({
   //NAVBAR
   navbar: {
     backgroundColor: colors.primary,
@@ -37,13 +37,28 @@ export const useStyles = makeStyles({
   filterContainer: {
     height: "100px",
   },
+  formControl: {
+    width: "90%",
+    [theme.breakpoints.up("md")]: {
+      width: "60%",
+    },
+  },
   filterLabel: {
     color: colors.sDark,
+    [theme.breakpoints.up("md")]: {
+      fontSize: "1.2rem",
+    },
+    [theme.breakpoints.up("lg")]: {
+      fontSize: "1.4rem",
+    },
   },
 
   select: {
     "&:after": {
       borderColor: colors.primary,
+    },
+    [theme.breakpoints.up("lg")]: {
+      fontSize: "1.3rem",
     },
   },
 
@@ -57,27 +72,88 @@ export const useStyles = makeStyles({
     width: "50px",
   },
   sword: {
-    backgroundColor: "#ffffff",
-    width: "80%",
+    backgroundColor: colors.sText,
+    width: "60%",
     height: "400px",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
+    padding: "0 20px",
     marginBottom: "40px",
+    [theme.breakpoints.up("sm")]: {
+      width: "60%",
+    },
+    [theme.breakpoints.up("lg")]: {
+      width: "70%",
+    },
+    [theme.breakpoints.up("xl")]: {
+      width: "60%",
+    },
   },
   imageContainer: {
     marginTop: "10px",
     height: "60%",
+    [theme.breakpoints.up("md")]: {
+      marginTop: "0px",
+    },
   },
   image: {
     height: "100%",
+    objectFit: "contain",
   },
-  price: {
-    fontWeight: "700",
+  cardDetails: {
+    padding: "0",
+  },
+  swordName: {
+    fontWeight: "200",
+    [theme.breakpoints.up("sm")]: {
+      fontSize: "1.2rem",
+    },
+    [theme.breakpoints.up("lg")]: {
+      fontSize: "1.4rem",
+    },
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "1.7rem",
+    },
+  },
+  swordWielder: {
+    fontWeight: "200",
+    [theme.breakpoints.up("sm")]: {
+      fontSize: "1.2rem",
+    },
+    [theme.breakpoints.up("lg")]: {
+      fontSize: "1.4rem",
+    },
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "1.7rem",
+    },
   },
   buttonAndPrice: {
     display: "flex",
     justifyContent: "space-evenly",
+  },
+  price: {
+    fontWeight: "700",
+    [theme.breakpoints.up("md")]: {
+      fontSize: "1.1rem",
+    },
+    [theme.breakpoints.up("lg")]: {
+      fontSize: "1.3rem",
+    },
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "1.6rem",
+    },
+  },
+  buyButton: {
+    [theme.breakpoints.up("md")]: {
+      fontSize: "1.1rem",
+    },
+    [theme.breakpoints.up("lg")]: {
+      fontSize: "1.3rem",
+    },
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "1.6rem",
+    },
   },
 
   //CART COMPONENT
@@ -103,14 +179,14 @@ export const useStyles = makeStyles({
     display: "flex",
     justifyContent: "space-between",
   },
-});
+}));
 
 export const theme = createTheme({
   overrides: {
     MuiBadge: {
       badge: {
-        backgroundColor: "#1b1b1b",
-        color: "#ffffff",
+        backgroundColor: colors.sDark,
+        color: colors.sText,
       },
     },
     MuiFormLabel: {

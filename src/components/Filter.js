@@ -27,14 +27,14 @@ const Filter = () => {
       alignContent="center"
       className={classes.filterContainer}
     >
-      <FormControl style={{ width: "90%" }}>
+      <FormControl className={classes.formControl}>
         <InputLabel
           htmlFor="title-filter"
           classes={{
             root: classes.filterLabel,
           }}
         >
-          Filter
+          Filter by title
         </InputLabel>
         <Select
           className={classes.select}

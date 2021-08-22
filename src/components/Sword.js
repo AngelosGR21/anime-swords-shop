@@ -45,12 +45,15 @@ const Sword = ({ sword }) => {
           />
         </div>
         <CardContent className={classes.cardDetails}>
-          <Typography>{sword.name},</Typography>
-          <Typography>{sword.wielder}</Typography>
+          <Typography className={classes.swordName}>{sword.name},</Typography>
+          <Typography className={classes.swordWielder}>
+            {sword.wielder}
+          </Typography>
         </CardContent>
         <CardActions className={classes.buttonAndPrice}>
           <Typography className={classes.price}>£ {sword.price}</Typography>
           <Button
+            className={classes.buyButton}
             onClick={() => searchCart(sword)}
             color="inherit"
             endIcon={<AddShoppingCart />}

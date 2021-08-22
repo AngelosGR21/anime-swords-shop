@@ -29,7 +29,7 @@ const sword2 = new Sword(
 const sword3 = new Sword(
   3,
   "https://cdn.webshopapp.com/shops/305440/files/345311377/demon-slayer-inosuke-hashibira-indigo-gray-nichiri.jpg",
-  "Indigo Gray Nichirin Blade",
+  "Gray Nichirin Blade",
   "Inosuke Hashibira",
   39.99,
   "Demon Slayer"
