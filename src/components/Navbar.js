@@ -24,12 +24,18 @@ const Navbar = () => {
       <AppBar position="sticky" className={classes.navbar} color="primary">
         <Toolbar className={classes.toolbar}>
           <Link to="/" className={classes.brand}>
-            <Typography variant="h5">Shinai</Typography>
+            <Typography variant="h5" className={classes.brandAndCartButton}>
+              Shinai
+            </Typography>
           </Link>
-          <Link to="/cart">
+          <Link to="/cart" className={{}}>
             <IconButton>
-              <Badge badgeContent={cartItems}>
-                <ShoppingBasketIcon />
+              <Badge
+                badgeContent={cartItems}
+                max={99}
+                classes={{ badge: classes.badge }}
+              >
+                <ShoppingBasketIcon className={classes.brandAndCartButton} />
               </Badge>
             </IconButton>
           </Link>

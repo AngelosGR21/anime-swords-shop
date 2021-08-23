@@ -2,15 +2,15 @@ import { makeStyles } from "@material-ui/styles";
 import { createTheme } from "@material-ui/core";
 
 const colors = {
-  primary: "#ff8f00",
-  pLight: "#ffc046",
-  pDark: "#c56000",
-  pText: "#000000",
+  primary: "#ff8f00", // orange
+  pLight: "#ffc046", // light orange
+  pDark: "#c56000", // dark orange
+  pText: "#000000", // black
 
-  secondary: "#424242",
-  sLight: "#6d6d6d",
-  sDark: "#1b1b1b",
-  sText: "#ffffff",
+  secondary: "#424242", // grey
+  sLight: "#6d6d6d", // light grey
+  sDark: "#1b1b1b", // dark grey
+  sText: "#ffffff", // white
 };
 
 export const useStyles = makeStyles((theme) => ({
@@ -19,6 +19,18 @@ export const useStyles = makeStyles((theme) => ({
     backgroundColor: colors.primary,
     color: colors.sDark,
     boxShadow: `0px 4px 3px ${colors.sDark}`,
+    [theme.breakpoints.up("md")]: {
+      fontSize: "3rem",
+    },
+    [theme.breakpoints.up("lg")]: {
+      fontSize: "3.5rem",
+    },
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "4rem",
+    },
+  },
+  toolbar: {
+    justifyContent: "space-between",
   },
   brand: {
     textDecoration: "none",
@@ -29,8 +41,24 @@ export const useStyles = makeStyles((theme) => ({
       color: colors.sText,
     },
   },
-  toolbar: {
-    justifyContent: "space-between",
+  badge: {
+    [theme.breakpoints.up("md")]: {
+      height: "25px",
+      minWidth: "25px",
+      fontSize: "0.9rem",
+      borderRadius: "25px",
+    },
+  },
+  brandAndCartButton: {
+    [theme.breakpoints.up("md")]: {
+      fontSize: "1.8rem",
+    },
+    [theme.breakpoints.up("lg")]: {
+      fontSize: "2rem",
+    },
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "2.5rem",
+    },
   },
 
   //FILTER SECTION
@@ -163,21 +191,82 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    boxSizing: "border-box",
+    padding: "20px 0",
   },
   cartCard: {
     marginBottom: "2rem",
+    width: "60%",
+    height: "auto",
     display: "flex",
-    justifyContent: "space-between",
+    flexDirection: "column",
+    justifyContent: "space-evenly",
     alignItems: "center",
-    width: "90%",
+
     padding: "20px 30px",
   },
   cartImage: {
-    width: "10%",
+    width: "30%",
+    marginBottom: "20px",
   },
   itemsNumberDiv: {
     display: "flex",
     justifyContent: "space-between",
+    marginBottom: "10px",
+    marginTop: "10px",
+  },
+
+  //EMPTY CART
+  emptyCartContainer: {
+    display: "flex",
+    height: "70vh",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  emptyCartHeader: {
+    fontSize: "1.9rem",
+    color: colors.sDark,
+    fontWeight: "400",
+    [theme.breakpoints.up("sm")]: {
+      fontSize: "2.3rem",
+    },
+    [theme.breakpoints.up("md")]: {
+      fontSize: "2.5rem",
+    },
+    [theme.breakpoints.up("lg")]: {
+      fontSize: "3.2rem",
+    },
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "4rem",
+    },
+  },
+  emptyCartLink: {
+    marginTop: "2rem",
+    textDecoration: "none",
+  },
+  emptyCartButton: {
+    fontSize: "1rem",
+    color: colors.primary,
+    backgroundColor: colors.pText,
+    "&:hover": {
+      color: colors.pLight,
+      backgroundColor: colors.sDark,
+    },
+    [theme.breakpoints.up("sm")]: {
+      fontSize: "1.1rem",
+      padding: "8px 18px",
+    },
+    [theme.breakpoints.up("md")]: {
+      fontSize: "1.2rem",
+    },
+    [theme.breakpoints.up("lg")]: {
+      fontSize: "1.4rem",
+    },
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "1.9rem",
+      padding: "10px 20px",
+    },
   },
 }));
 
