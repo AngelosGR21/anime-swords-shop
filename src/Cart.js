@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
 //HOOKS
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
+
 //COMPONENTS
 import Navbar from "./components/Navbar";
 
@@ -17,6 +19,7 @@ import {
   Typography,
   Container,
   IconButton,
+  Button,
 } from "@material-ui/core";
 //MATERIAL-UI STYLES
 import { useStyles } from "./useStyles";
@@ -29,28 +32,73 @@ const Cart = () => {
   const onClickFunctionality = (item, operation) => {
     if (operation === "plus") {
       item.itemsInCart += 1;
-      setTotal(total + parseFloat(item.price));
       setCartItems(cartItems + 1);
     }
     if (operation === "minus") {
       //REMOVING ITEM FROM CART IF QTY = 0
       if (item.itemsInCart === 1) {
+        item.itemsInCart = 0;
         let updatedCart = cart.filter((i) => i.id !== item.id);
         setCartItems(cartItems - 1);
-        setTotal(total - parseFloat(item.price));
         return setCart(updatedCart);
       }
       item.itemsInCart -= 1;
-      setTotal(total - parseFloat(item.price));
       setCartItems(cartItems - 1);
     }
   };
+
+  const removeItem = (item) => {
+    let updatedCart = cart.filter((i) => i.id !== item.id);
+    setCartItems(cartItems - item.itemsInCart);
+    setCart(updatedCart);
+    item.itemsInCart = 0;
+  };
+
+  //Setting the subtotal and price of items to show only the 2 digits after .
+  const slicePrice = (item) => {
+    let regex = /\./;
+    if (item) {
+      let price = `${item.price * item.itemsInCart}`;
+      let indexOfDot = price.search(regex);
+      price = price.slice(0, indexOfDot + 3);
+      return price;
+    }
+    let subtotal = `${total}`;
+    let indexOfDot = subtotal.search(regex);
+    subtotal = parseFloat(subtotal.slice(0, indexOfDot + 3));
+    return subtotal;
+  };
+  const subtotal = () => {
+    let subtotal = 0;
+    for (let i = 0; i < cart.length; i++) {
+      let total = cart[i].itemsInCart * cart[i].price;
+      subtotal += total;
+    }
+    return subtotal;
+  };
+
+  useEffect(() => {
+    if (cart.length === 1) {
+      let totalPrice = cart[0].price * cart[0].itemsInCart;
+      setTotal(totalPrice);
+    }
+    setTotal(subtotal());
+  });
 
   if (cart.length === 0) {
     return (
       <>
         <Navbar />
-        <h1>Cart empty</h1>
+        <Container className={classes.emptyCartContainer}>
+          <Typography variant="h2" className={classes.emptyCartHeader}>
+            Your cart is empty.
+          </Typography>
+          <Link to="/" className={classes.emptyCartLink}>
+            <Button variant="contained" className={classes.emptyCartButton}>
+              Browse swords
+            </Button>
+          </Link>
+        </Container>
       </>
     );
   }
@@ -87,16 +135,10 @@ const Cart = () => {
                   <ArrowForwardIosOutlinedIcon />
                 </IconButton>
               </div>
-              <Typography>{item.price * item.itemsInCart}</Typography>
+              <Typography>£{slicePrice(item)}</Typography>
               <IconButton
                 onClick={() => {
-                  let updatedCart = cart.filter((i) => i.id !== item.id);
-                  setCartItems(cartItems - item.itemsInCart);
-                  setTotal(
-                    total -
-                      parseFloat(item.price) * parseFloat(item.itemsInCart)
-                  );
-                  setCart(updatedCart);
+                  removeItem(item);
                 }}
               >
                 <DeleteOutlineOutlinedIcon />
@@ -104,6 +146,11 @@ const Cart = () => {
             </Card>
           );
         })}
+        <div>
+          <Typography style={{ backgroundColor: "white" }}>
+            Subtotal : £{slicePrice()}
+          </Typography>
+        </div>
       </Container>
     </>
   );
