@@ -12,7 +12,7 @@ import { AddShoppingCart } from "@material-ui/icons";
 import { useContext } from "react";
 import { DataContext } from "../utils/DataProvider";
 
-import { useStyles } from "../useStyles";
+import useStyles from "../styles/swordStyles";
 
 const Sword = ({ sword }) => {
   const classes = useStyles();

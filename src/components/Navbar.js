@@ -13,7 +13,7 @@ import { useContext } from "react";
 import { DataContext } from "../utils/DataProvider";
 
 //IMPORTING STYLES
-import { useStyles } from "../useStyles";
+import useStyles from "../styles/navbarStyles";
 
 const Navbar = () => {
   const { cartItems } = useContext(DataContext);

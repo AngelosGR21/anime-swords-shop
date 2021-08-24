@@ -23,7 +23,7 @@ import {
   Divider,
 } from "@material-ui/core";
 //MATERIAL-UI STYLES
-import { useStyles } from "./useStyles";
+import useStyles from "./styles/cartStyles";
 
 const Cart = () => {
   const classes = useStyles();

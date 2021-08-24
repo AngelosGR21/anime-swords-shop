@@ -8,7 +8,7 @@ import Cart from "./Cart";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import { DataProvider } from "./utils/DataProvider";
-import { theme } from "./useStyles";
+import theme from "./styles/theme";
 import { ThemeProvider } from "@material-ui/core";
 
 ReactDOM.render(

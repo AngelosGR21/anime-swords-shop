@@ -3,7 +3,7 @@ import { DataContext } from "../utils/DataProvider";
 
 import { Grid } from "@material-ui/core";
 
-import { useStyles } from "../useStyles";
+import useStyles from "../styles/swordsContainerStyles";
 import Sword from "./Sword";
 import Filter from "./Filter";
 

@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Grid, Select, InputLabel, FormControl } from "@material-ui/core";
 
 import { DataContext } from "../utils/DataProvider";
-import { useStyles } from "../useStyles";
+import useStyles from "../styles/filterStyles";
 
 const Filter = () => {
   const classes = useStyles();
