@@ -20,6 +20,7 @@ import {
   Container,
   IconButton,
   Button,
+  Divider,
 } from "@material-ui/core";
 //MATERIAL-UI STYLES
 import { useStyles } from "./useStyles";
@@ -60,11 +61,17 @@ const Cart = () => {
     if (item) {
       let price = `${item.price * item.itemsInCart}`;
       let indexOfDot = price.search(regex);
+      if (indexOfDot === -1) {
+        return price;
+      }
       price = price.slice(0, indexOfDot + 3);
       return price;
     }
     let subtotal = `${total}`;
     let indexOfDot = subtotal.search(regex);
+    if (indexOfDot === -1) {
+      return subtotal;
+    }
     subtotal = parseFloat(subtotal.slice(0, indexOfDot + 3));
     return subtotal;
   };
@@ -72,7 +79,9 @@ const Cart = () => {
     let subtotal = 0;
     for (let i = 0; i < cart.length; i++) {
       let total = cart[i].itemsInCart * cart[i].price;
+      console.log(total, "Total");
       subtotal += total;
+      console.log(subtotal, "Subtotal");
     }
     return subtotal;
   };
@@ -106,7 +115,7 @@ const Cart = () => {
   return (
     <>
       <Navbar />
-      <Container className={classes.container} maxwidth="sm">
+      <Container className={classes.container} maxWidth="xl">
         {cart.map((item) => {
           return (
             <Card className={classes.cartCard} raised={true} key={item.id}>
@@ -115,7 +124,7 @@ const Cart = () => {
                 component="img"
                 className={classes.cartImage}
               />
-              <Typography>{item.name}</Typography>
+              <Typography className={classes.itemName}>{item.name}</Typography>
               <div className={classes.itemsNumberDiv}>
                 <IconButton
                   onClick={() => {
@@ -123,33 +132,44 @@ const Cart = () => {
                   }}
                   size="small"
                 >
-                  <ArrowBackIosOutlinedIcon />
+                  <ArrowBackIosOutlinedIcon className={classes.iconButtons} />
                 </IconButton>
-                <Typography variant="h5">{item.itemsInCart}</Typography>
+                <Typography className={classes.itemsInCart}>
+                  {item.itemsInCart}
+                </Typography>
                 <IconButton
                   onClick={() => {
                     onClickFunctionality(item, "plus");
                   }}
                   size="small"
                 >
-                  <ArrowForwardIosOutlinedIcon />
+                  <ArrowForwardIosOutlinedIcon
+                    className={classes.iconButtons}
+                  />
                 </IconButton>
               </div>
-              <Typography>£{slicePrice(item)}</Typography>
+              <Typography className={classes.itemsInCartPrice}>
+                £{slicePrice(item)}
+              </Typography>
               <IconButton
+                color="secondary"
                 onClick={() => {
                   removeItem(item);
                 }}
               >
-                <DeleteOutlineOutlinedIcon />
+                <DeleteOutlineOutlinedIcon className={classes.deleteIcon} />
               </IconButton>
             </Card>
           );
         })}
-        <div>
-          <Typography style={{ backgroundColor: "white" }}>
+        <Divider orientation="horizontal" classes={{ root: classes.divider }} />
+        <div className={classes.subtotalContainer}>
+          <Typography className={classes.subtotal}>
             Subtotal : £{slicePrice()}
           </Typography>
+          <Button className={classes.cartButton} variant="contained">
+            Checkout
+          </Button>
         </div>
       </Container>
     </>
