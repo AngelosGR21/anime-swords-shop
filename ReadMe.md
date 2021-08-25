@@ -4,7 +4,6 @@
 
 - [Overview](#overview)
   - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
@@ -21,11 +20,6 @@ Users should be able to:
 - See hover states for all interactive elements on the page.
 - Add items to cart.
 - Remove an item from the cart as well as increase or decrement items.
-
-### Screenshot
-
-![Mobile View](./screenshots/mobileView.png)
-![Desktop View](./screenshots/dekstopView.png)
 
 ### Links
 
