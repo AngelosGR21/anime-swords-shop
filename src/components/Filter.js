@@ -9,7 +9,7 @@ const Filter = () => {
   const { titles, setAllSwords, data } = useContext(DataContext);
 
   const handleChange = (e) => {
-    if (e.target.value === "") {
+    if (!e.target.value) {
       setAllSwords(data);
     } else {
       let filterSwords = data.filter(
@@ -26,6 +26,7 @@ const Filter = () => {
       justifyContent="center"
       alignContent="center"
       className={classes.filterContainer}
+      component="form"
     >
       <FormControl className={classes.formControl}>
         <InputLabel

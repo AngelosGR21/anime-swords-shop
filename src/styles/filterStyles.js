@@ -10,6 +10,9 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("md")]: {
       width: "60%",
     },
+    [theme.breakpoints.up("xl")]: {
+      width: "50%",
+    },
   },
   filterLabel: {
     color: colors.sDark,

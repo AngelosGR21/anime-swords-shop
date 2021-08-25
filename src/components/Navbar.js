@@ -21,7 +21,12 @@ const Navbar = () => {
 
   return (
     <>
-      <AppBar position="sticky" className={classes.navbar} color="primary">
+      <AppBar
+        position="sticky"
+        className={classes.navbar}
+        color="primary"
+        component="nav"
+      >
         <Toolbar className={classes.toolbar}>
           <Link to="/" className={classes.brand}>
             <Typography variant="h5" className={classes.brandAndCartButton}>

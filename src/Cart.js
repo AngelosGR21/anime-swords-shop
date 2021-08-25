@@ -79,9 +79,7 @@ const Cart = () => {
     let subtotal = 0;
     for (let i = 0; i < cart.length; i++) {
       let total = cart[i].itemsInCart * cart[i].price;
-      console.log(total, "Total");
       subtotal += total;
-      console.log(subtotal, "Subtotal");
     }
     return subtotal;
   };
@@ -115,16 +113,27 @@ const Cart = () => {
   return (
     <>
       <Navbar />
-      <Container className={classes.container} maxWidth="xl">
+      <Container
+        className={classes.container}
+        maxWidth="xl"
+        component="section"
+      >
         {cart.map((item) => {
           return (
-            <Card className={classes.cartCard} raised={true} key={item.id}>
+            <Card
+              className={classes.cartCard}
+              raised={true}
+              key={item.id}
+              component="article"
+            >
               <CardMedia
                 src={item.image}
                 component="img"
                 className={classes.cartImage}
               />
-              <Typography className={classes.itemName}>{item.name}</Typography>
+              <Typography className={classes.itemName} component="h3">
+                {item.name}
+              </Typography>
               <div className={classes.itemsNumberDiv}>
                 <IconButton
                   onClick={() => {

@@ -12,9 +12,15 @@ const Swords = () => {
   const { allSwords } = useContext(DataContext);
   return (
     <>
-      <Grid container>
+      <Grid container component="section">
         <Filter />
-        <Grid container item className={classes.containerOfSwords} xs={12}>
+        <Grid
+          container
+          item
+          className={classes.containerOfSwords}
+          xs={12}
+          component="main"
+        >
           {allSwords.map((sword) => {
             return <Sword sword={sword} key={sword.id}></Sword>;
           })}

@@ -70,9 +70,6 @@ const useStyles = makeStyles((theme) => ({
   },
   price: {
     fontWeight: "700",
-    [theme.breakpoints.up("md")]: {
-      fontSize: "1.1rem",
-    },
     [theme.breakpoints.up("lg")]: {
       fontSize: "1.3rem",
     },
