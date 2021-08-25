@@ -4,6 +4,7 @@ import "./index.css";
 
 import Home from "./Home";
 import Cart from "./Cart";
+import Error from "./Error";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -16,12 +17,17 @@ ReactDOM.render(
     <Router>
       <ThemeProvider theme={theme}>
         <DataProvider>
-          <Route path="/" exact>
-            <Home />
-          </Route>
-          <Route path="/cart">
-            <Cart />
-          </Route>
+          <Switch>
+            <Route path="/" exact>
+              <Home />
+            </Route>
+            <Route path="/cart">
+              <Cart />
+            </Route>
+            <Route>
+              <Error></Error>
+            </Route>
+          </Switch>
         </DataProvider>
       </ThemeProvider>
     </Router>
