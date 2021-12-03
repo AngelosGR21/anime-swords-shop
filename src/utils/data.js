@@ -13,7 +13,7 @@ class Sword {
 const sword1 = new Sword(
   1,
   "https://cdn.webshopapp.com/shops/305440/files/345326037/demon-slayer-kanao-tsuyuri-light-pink-nichirin-bla.jpg",
-  "Light Pink Nichirin Blade",
+  "Pink Nichirin Blade",
   "Kanao Tsuyuri",
   49.99,
   "Demon Slayer"
